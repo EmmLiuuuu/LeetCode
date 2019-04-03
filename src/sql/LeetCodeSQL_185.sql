@@ -1,0 +1,2 @@
+select d.Name as Department, e.Name as Employee, Salary from Employee e join Department d on d.Id = e.DepartmentId where
+    (select count(distinct Salary) from Employee e1 where e1.DepartmentId = e.DepartmentId and e.Salary < e1.Salary) < 3
