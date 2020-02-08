@@ -35,7 +35,7 @@ public class ReadCompletionHandler implements CompletionHandler<Integer, ByteBuf
             ByteBuffer writeBuffer = ByteBuffer.allocateDirect(bytes.length);
             writeBuffer.put(bytes);
             writeBuffer.flip();
-            channel.write(writeBuffer, writeBuffer, new CompletionHandler<>() {
+            channel.write(writeBuffer, writeBuffer, new CompletionHandler<Integer, ByteBuffer>() {
                 @Override
                 public void completed(Integer result, ByteBuffer attachment) {
                     if (attachment.hasRemaining()) {

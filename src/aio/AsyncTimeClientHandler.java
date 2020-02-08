@@ -53,7 +53,7 @@ public class AsyncTimeClientHandler implements Runnable, CompletionHandler<Void,
         ByteBuffer writeBuffer = ByteBuffer.allocateDirect(req.length);
         writeBuffer.put(req);
         writeBuffer.flip();
-        client.write(writeBuffer, writeBuffer, new CompletionHandler<>() {
+        client.write(writeBuffer, writeBuffer, new CompletionHandler<Integer, ByteBuffer>() {
             @Override
             public void completed(Integer result, ByteBuffer attachment) {
                 if (attachment.hasRemaining()) {
@@ -63,7 +63,7 @@ public class AsyncTimeClientHandler implements Runnable, CompletionHandler<Void,
                     client.read(
                             readBuffer,
                             readBuffer,
-                            new CompletionHandler<>() {
+                            new CompletionHandler<Integer, ByteBuffer>() {
                                 @Override
                                 public void completed(Integer result, ByteBuffer attachment) {
                                     attachment.flip();

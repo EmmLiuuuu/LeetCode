@@ -1,5 +1,6 @@
 package leetcode;
 
+//https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iii/solution/yi-ge-tong-yong-fang-fa-tuan-mie-6-dao-gu-piao-wen/
 public class LeetCode123 {
 
     public static int calculateMax(int[] prices) {
@@ -20,5 +21,14 @@ public class LeetCode123 {
             afterSecondSell = Math.max(afterSecondSell, afterSecondBuy + curPrice);
         }
         return afterSecondSell;
+    }
+
+
+    public static int calculateMax1(int[] prices) {
+        return 0;
+    }
+
+    public static void main(String[] args) {
+        calculateMax(new int[]{1, 2, 3, 4, 5});
     }
 }
