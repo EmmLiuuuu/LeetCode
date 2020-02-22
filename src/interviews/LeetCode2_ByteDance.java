@@ -58,8 +58,7 @@ public class LeetCode2_ByteDance {
         }
     }
 
-
-
+    //head是头指针，head.next是第一个元素，不断地往head，head.next中间插入链表元素，即可达到逆置的效果
     private static void reverse(Node head) {
         if (head == null || head.next == null) {
             return;

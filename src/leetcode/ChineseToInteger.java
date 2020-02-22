@@ -1,5 +1,7 @@
 package leetcode;
 
+import java.util.Arrays;
+
 public class ChineseToInteger {
 
     public static void main(String[] args) {
@@ -24,8 +26,8 @@ public class ChineseToInteger {
 
         int[] bit = new int[4];
 
-        boolean flag = s.contains("万");
         String[] temp = s.split("万");
+        boolean flag = temp.length > 1;
         int sum = 0;
 
         for (String string : temp) {
@@ -46,9 +48,9 @@ public class ChineseToInteger {
                     }
                 }
                 if (index < bit.length && bit[index] == 1) {
-                    sum += (Integer.valueOf(String.valueOf(oTn)) * level);
+                    sum += ((oTn - '0') * level);
                 } else {
-                    sum += Integer.valueOf(String.valueOf(oTn));
+                    sum += (oTn - '0');
                 }
                 index++;
                 level /= 10;
@@ -59,9 +61,7 @@ public class ChineseToInteger {
                 flag = false;
             }
 
-            for (int i = 0; i < bit.length; i++) {
-                bit[i] = 0;
-            }
+            Arrays.fill(bit, 0);
         }
         return sum;
     }

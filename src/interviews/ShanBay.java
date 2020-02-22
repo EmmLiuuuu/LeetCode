@@ -1,6 +1,8 @@
 package interviews;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 public class ShanBay {
 
@@ -17,8 +19,8 @@ public class ShanBay {
 //        [[2,100],[3,200],[4,300],[5,500],[5,400],[5,250],[6,370],[6,360],[7,380]]
 //        [[30,50],[12,2],[3,4],[12,15]]
 //        [[5,4],[6,4],[6,7],[2,3]]
-        int[][] a = new int[][] {
-            {2,100}, {3,200},{4,300},{5,500},{5,400},{5,250},{6,370},{6,360},{7,380}
+        int[][] a = new int[][]{
+                {2, 100}, {3, 200}, {4, 300}, {5, 500}, {5, 400}, {5, 250}, {6, 370}, {6, 360}, {7, 380}
 //                {30,50},{12,2},{3,4},{12,15}
 //                {5,4},{6,4},{6,7},{2,3}
 //                {1,1},{2,2}
@@ -26,8 +28,8 @@ public class ShanBay {
 
 //        System.out.println(maxEnvelopes(a));
 //        System.out.println(fun2(list));
-//        fun1();
-//        fun1_2();
+        fun1();
+        fun1_2();
     }
 
     private static List<Integer> fun2(List<Integer> array) {
@@ -89,38 +91,11 @@ public class ShanBay {
     }
 
     private static void fun1_2() {
-        StringBuilder builder = new StringBuilder();
         for (int i = 1; i <= 9; i++) {
             for (int j = i; j <= 9; j++) {
-                if (i * j < 10 && j < 10 - i && (i * (j + 1)) < 10) {
-                    System.out.print(i * j + "  ");
-                    builder.append(i * j).append("  ");
-                    continue;
-                }
-                if (i <= 2 && j == 9) {
-                    System.out.println(i * j);
-                    for (int k = 0; k < i; k++) {
-                        System.out.print("   ");
-                    }
-                    continue;
-                }
-                if (j == 9 && i > 3) {
-                    System.out.println(i * j);
-                    System.out.print("       ");
-                    for (int k = 0; k < i; k++) {
-                        System.out.print(" ");
-                    }
-                    continue;
-                }
-                if (j == 9) {
-                    System.out.println(i * j);
-                    System.out.print("        ");
-                    continue;
-                }
-                System.out.print(i * j + " ");
+                System.out.printf("%2d ", i * j);
             }
-//            System.out.print("a");
-//            return;
+            System.out.println();
         }
     }
 }
