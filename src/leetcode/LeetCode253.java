@@ -13,7 +13,7 @@ public class LeetCode253 {
     return 2.
      */
 
-    public int minMeetingRooms(Interval[] intervals) {
+    public int minMeetingRooms(AAA[] intervals) {
         if (intervals.length < 2) {
             return intervals.length;
         }
@@ -27,16 +27,16 @@ public class LeetCode253 {
         return count;
     }
 
-    public class Interval {
+    public class AAA {
         int start;
         int end;
 
-        Interval() {
+        AAA() {
             start = 0;
             end = 0;
         }
 
-        Interval(int s, int e) {
+        AAA(int s, int e) {
             start = s;
             end = e;
         }

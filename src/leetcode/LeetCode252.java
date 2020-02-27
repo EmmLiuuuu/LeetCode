@@ -6,7 +6,7 @@ import java.util.Comparator;
 //https://www.cnblogs.com/jimmycheng/p/7076019.html
 public class LeetCode252 {
 
-    public boolean canAttendMeetings(Interval[] intervals) {
+    public boolean canAttendMeetings(AAA[] intervals) {
         Arrays.sort(intervals, Comparator.comparingInt(s -> s.start));
         for (int i = 1; i < intervals.length; i++) {
             if (intervals[i].start < intervals[i - 1].end) {
@@ -23,16 +23,16 @@ public class LeetCode252 {
     Given [[0, 30],[5, 10],[15, 20]],
     return false.
      */
-    public class Interval {
+    public class AAA {
         int start;
         int end;
 
-        Interval() {
+        AAA() {
             start = 0;
             end = 0;
         }
 
-        Interval(int s, int e) {
+        AAA(int s, int e) {
             start = s;
             end = e;
         }
