@@ -38,6 +38,7 @@ public class LeetCode53 {
         return maxSum;
     }
 
+    //dp
     public int maxSubArray3(int[] nums) {
         int maxSum = nums[0];
         for (int i = 1; i < nums.length; i++) {
