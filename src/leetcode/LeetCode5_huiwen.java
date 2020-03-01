@@ -24,4 +24,34 @@ public class LeetCode5_huiwen {
             index = i + 1;//多走了一步，加回来
         }
     }
+
+    public static void main(String[] args) {
+        System.out.println(new LeetCode5_huiwen().longestPalindrome1("cbbdcabiuaiiccccc"));
+    }
+
+    public String longestPalindrome1(String s) {
+        if (s == null || s.length() < 2) {
+            return s;
+        }
+        String max = "";
+        boolean[][] dp = new boolean[s.length() + 1][s.length() + 1];
+        //dp矩阵，dp[j][i]说明子串[j, i)是回文（左闭右开）
+        for (int i = 0; i < dp.length; i++) {
+            for (int j = i; j >= 0; j--) {
+                //当子串是""（空字符串），或者是长度为1时，为回文串
+                if (i == j || j == i - 1) {
+                    dp[j][i] = true;
+                } else if (s.charAt(i - 1) == s.charAt(j) && dp[j + 1][i - 1]) {
+                    //当子串左右两个字符相等，且[j + 1, i - 1) 为回文子串时，那么[j, i)也是回文串
+                    dp[j][i] = true;
+                }
+
+                //当不为空字符串，且[j,i)为回文串，且长度较长时，更新max
+                if (i != j && dp[j][i] && max.length() < i - j) {
+                    max = s.substring(j, i);
+                }
+            }
+        }
+        return max;
+    }
 }

@@ -28,7 +28,7 @@ public class LeetCode122 {
 
     //不停地找谷，峰，然后计算收益
     public int maxProfit1(int[] prices) {
-        int valley = Integer.MAX_VALUE;
+        int valley;
         int peek = 0;
 
         int maxProfit = 0;
