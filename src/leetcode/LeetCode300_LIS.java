@@ -30,6 +30,7 @@ public class LeetCode300_LIS {
         }
         //mArray[i][j]存储着
         //表示使用 nums[i] 作为上一个被认为包含/不包含在 lis 中的元素的 lis 可能的长度，其中 nums[j] 作为当前被认为包含/不包含在 lis 中的元素
+        //从i->j的最长递增子序列长度
         int[][] mArray = new int[nums.length][nums.length];
         for (int[] array : mArray) {
             Arrays.fill(array, -1);
@@ -111,4 +112,6 @@ public class LeetCode300_LIS {
 //            return part(a, i, right, k);
 //        }
 //    }
+
+
 }
