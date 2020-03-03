@@ -1,6 +1,7 @@
 package leetcode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class LeetCode354 {
@@ -57,5 +58,31 @@ public class LeetCode354 {
             maxans = Math.max(maxans, dp[i]);
         }
         return maxans;
+    }
+
+    public int maxEnvelopes1(int[][] envelopes) {
+        if (envelopes.length <= 1) {
+            return envelopes.length;
+        }
+        //先对w进行排序，然后再对h进行排序，然后求h的递增子序列
+        Arrays.sort(envelopes, (c, v) -> {
+            if (c[0] == v[0]) {
+                return c[1] - v[1];
+            }
+            return c[0] - v[0];
+        });
+        int max = Integer.MIN_VALUE;
+        int[] dp = new int[envelopes.length];
+        for (int i = 0; i < envelopes.length; i++) {
+            dp[i] = 1;//千万别忘了这里，因为1个数的时候也是递增子序列
+            for (int j = i; j >= 0; j--) {
+                //题目要求是w和h都大于前一个的时候才能套娃
+                if (envelopes[j][1] < envelopes[i][1] && envelopes[i][0] > envelopes[j][0]) {
+                    dp[i] = Math.max(dp[i], dp[j] + 1);
+                }
+                max = Math.max(dp[i], max);
+            }
+        }
+        return max;
     }
 }
