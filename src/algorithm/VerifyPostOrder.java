@@ -35,10 +35,12 @@ public class VerifyPostOrder {
         boolean left = true, right = true;
         // 检查左子树部分是否为二叉树
         if (mid > L) {
+            //此时，mid的位置右子树的叶子节点，需要回退一位
             left = check(postOrder, L, mid - 1);
         }
         // 检查右子树部分是否为二叉树
         if (mid < R) {
+            //记得去除根节点
             right = check(postOrder, mid, R - 1);
         }
         return left && right;

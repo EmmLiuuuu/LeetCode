@@ -56,7 +56,7 @@ public class LeetCode3 {
         for (int i = 0, j = 0; j < s.length(); j++) {
             char c = s.charAt(j);
             if (map.containsKey(c)) {
-                //当发现窗口中存在重复字符时，直接跳过这个窗口，到达下一个起点，而不是i一个个往前移
+                //当发现窗口中存在重复字符时，直接到达下一个起点，而不是i一个个往前移
                 i = Math.max(i, map.get(c) + 1);
             }
             //如果不存在重复的字符，那么j是不断变大的，result会越来越大，记录最大的不重复子串
