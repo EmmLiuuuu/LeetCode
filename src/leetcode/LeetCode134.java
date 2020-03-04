@@ -50,7 +50,26 @@ public class LeetCode134 {
         return totalOil >= 0 ? start : -1;
     }
 
+    public static int canCompleteCircuit3(int[] gas, int[] cost) {
+        flag:
+        for (int i = 0; i < gas.length; i++) {
+            int oil = 0;
+            int index = i;
+            do {
+                oil += gas[index];
+                oil -= cost[index];
+                if (oil < 0) {
+                    continue flag;
+                }
+                index += 1;
+                index %= (gas.length);
+            } while (index != i);
+            return index;
+        }
+        return -1;
+    }
+
     public static void main(String[] args) {
-        System.out.println(canCompleteCircuit1(new int[]{1, 2, 3, 4, 5}, new int[]{3, 4, 5, 1, 2}));
+        System.out.println(canCompleteCircuit3(new int[]{3, 3, 4}, new int[]{3, 4, 4}));
     }
 }
