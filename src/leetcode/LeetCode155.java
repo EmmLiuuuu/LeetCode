@@ -34,4 +34,41 @@ public class LeetCode155 {
     public int getMin() {
         return min;
     }
+
+    class MinStack {
+
+        private LinkedList<Integer> stack = new LinkedList<>();
+
+        /**
+         * initialize your data structure here.
+         */
+        public MinStack() {
+
+        }
+
+        public void push(int x) {
+            int min = x;
+            if (!stack.isEmpty()) {
+                min = Math.min(stack.getLast(), min);
+            }
+            stack.addLast(x);
+            stack.addLast(min);
+        }
+
+        public void pop() {
+            stack.removeLast();
+            stack.removeLast();
+        }
+
+        public int top() {
+            int min = stack.removeLast();
+            int value = stack.getLast();
+            stack.addLast(min);
+            return value;
+        }
+
+        public int getMin() {
+            return stack.getLast();
+        }
+    }
 }

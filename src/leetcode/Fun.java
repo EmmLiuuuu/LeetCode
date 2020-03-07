@@ -1,6 +1,7 @@
 package leetcode;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Fun {
@@ -99,13 +100,39 @@ public class Fun {
     }
 
     public static void main(String[] args) {
-        System.out.println(fun(new int[] {1, 2, 3, 26, 27, 28}));
+        System.out.println(fun(new int[]{1, 2, 3, 26, 27, 28}));
         for (int i = 0; i < 1100; i++) {
             System.out.println(fun(new int[]{i}));
         }
 
-        System.out.println(fun1(new String[] {"# a", "## b", "## c", "### d", "# e", "# f"}));
-        System.out.println(fun1(new String[] {"# a", "## b", "## c", "### d", "## e", "# f"}));
-        System.out.println(fun1(new String[] {"# a", "## b", "## c", "### d", "## e", "### f", "# g"}));
+        System.out.println(parser(new String[]{"# a", "## b", "## c", "### d", "# e", "# f"}));
+        System.out.println(parser(new String[]{"# a", "## b", "## c", "### d", "## e", "# f"}));
+        System.out.println(parser(new String[]{"# a", "## b", "## c", "### d", "## e", "### f", "# g"}));
+    }
+
+
+    public static List<Node> parser(String[] strings) {
+        int[] levels = new int[strings.length];
+        List<Node> result = new ArrayList<>();
+
+        String pre = "#";
+        for (String str : strings) {
+            String[] splits = str.split(" ");
+            assert splits.length == 2;
+            Node node = new Node("", splits[1]);
+            levels[splits[0].length() - 1] += 1;
+            if (splits[0].length() == 1) {
+                Arrays.fill(levels, 1, pre.length(), 0);
+            }
+            int i = 0;
+            for (; i < splits[0].length() - 1; i++) {
+                node.hn = node.hn + levels[i] + ".";
+            }
+            node.hn = node.hn + levels[i];
+            result.add(node);
+            pre = splits[0];
+        }
+
+        return result;
     }
 }

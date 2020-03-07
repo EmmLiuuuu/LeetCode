@@ -22,4 +22,25 @@ public class LeetCode242 {
 
         return true;
     }
+
+    public boolean isAnagram(String s, String t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
+        int[] chars = new int[26];
+        for (int i = 0; i < s.length(); i++) {
+            int sIndex = s.charAt(i) - 'a';
+            chars[sIndex]++;
+        }
+
+        for (int i = 0; i < t.length(); i++) {
+            int tIndex = t.charAt(i) - 'a';
+            if (chars[tIndex] == 0) {
+                return false;
+            } else {
+                chars[tIndex]--;
+            }
+        }
+        return true;
+    }
 }
