@@ -94,6 +94,23 @@ public class LeetCode2_ByteDance {
 
     }
 
+    private static Node reverse3(Node head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        Node cur = head;
+        Node pre = null;
+
+        while (cur != null) {
+            Node next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        return pre;
+    }
+
     public static void print(Node head) {
         Node p = head.next;
         while (p != null) {
