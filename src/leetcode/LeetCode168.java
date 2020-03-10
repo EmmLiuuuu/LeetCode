@@ -9,6 +9,7 @@ public class LeetCode168 {
     public String convertToTitle(int n) {
         StringBuilder builder = new StringBuilder();
         while (n > 0) {
+            //记得是从1开始的（1-26）
             int s = (n - 1) % 26;
             n = (n - 1) / 26;
             builder.append((char) (s + 'A'));
