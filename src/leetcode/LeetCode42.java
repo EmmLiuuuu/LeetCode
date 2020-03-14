@@ -16,6 +16,8 @@ public class LeetCode42 {
         }
 
         for (int i = 1; i <= max; i++) {
+            //如果走了一遍都没有找到起点，那么直接break，避免扫描鹤立鸡群的情况
+            boolean flag = true;
             boolean start = false;
             int temp = 0;
             for (int value : height) {
@@ -26,7 +28,11 @@ public class LeetCode42 {
                     sum += temp;
                     temp = 0;
                     start = true;
+                    flag = false;
                 }
+            }
+            if (flag) {
+                break;
             }
         }
 
