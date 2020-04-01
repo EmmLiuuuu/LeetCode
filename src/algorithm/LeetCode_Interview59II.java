@@ -43,7 +43,7 @@ public class LeetCode_Interview59II {
 
         public void push_back(int value) {
             queue.addLast(value);
-            if (!maxQueue.isEmpty() && maxQueue.getLast() < value) {
+            while (!maxQueue.isEmpty() && maxQueue.getLast() < value) {
                 maxQueue.removeLast();
             }
             maxQueue.addLast(value);
