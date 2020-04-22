@@ -1,14 +1,6 @@
 package main
 
-import "fmt"
-
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
-
-func zigzagLevelOrder1(root *TreeNode) [][]int {
+func zigzagLevelOrder(root *TreeNode) [][]int {
 	var res [][]int
 	if root == nil {
 		return res
@@ -73,9 +65,4 @@ func zigzagLevelOrder1(root *TreeNode) [][]int {
 		direction = -direction
 	}
 	return res
-}
-
-func main() {
-	root := TreeNode{3, &TreeNode{9, &TreeNode{1, nil, nil}, &TreeNode{2, nil, nil}}, &TreeNode{20, &TreeNode{15, nil, nil}, &TreeNode{7, nil, nil}}}
-	fmt.Println(zigzagLevelOrder1(&root))
 }
