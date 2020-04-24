@@ -7,6 +7,10 @@ type TreeNode struct {
 	Left  *TreeNode
 	Right *TreeNode
 }
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
 
 func zigzagLevelOrder1(root *TreeNode) [][]int {
 	var res [][]int
